@@ -593,8 +593,8 @@ where
 				}
 				Ok(())
 			},
-			TrustedCall::build_assertion(enclave_account, who, assertion, shard, bn) => {
-				ensure_enclave_signer_account(&enclave_account)?;
+			TrustedCall::build_assertion(root, who, assertion, shard, bn) => {
+				ensure!(is_root::<Runtime, AccountId>(&root), Self::Error::MissingPrivileges(root));
 				Self::build_assertion(&shard, who, assertion, bn)
 			},
 			TrustedCall::set_challenge_code_runtime(enclave_account, account, did, code) => {

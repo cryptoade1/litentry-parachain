@@ -20,7 +20,7 @@ use crate::{
 		balance::BalanceCommand,
 		get_storage::GetStorageCommand,
 		litentry::{
-			set_challenge_code::SetChallengeCodeCommand,
+			build_assertion::BuildAssertionCommand, set_challenge_code::SetChallengeCodeCommand,
 			set_user_shielding_preflight::SetUserShieldingKeyPreflightCommand,
 			user_shielding_key::UserShiledingKeyCommand,
 			verify_identity_preflight::VerifyIdentityPreflightCommand,
@@ -77,6 +77,8 @@ pub enum TrustedBaseCommand {
 	SetUserShieldingKeyPreflight(SetUserShieldingKeyPreflightCommand),
 
 	GetStorage(GetStorageCommand),
+
+	BuildAssertion(BuildAssertionCommand),
 }
 
 impl TrustedBaseCommand {
@@ -95,6 +97,7 @@ impl TrustedBaseCommand {
 			TrustedBaseCommand::VerifyIdentityPreflight(cmd) => cmd.run(cli, trusted_cli),
 			TrustedBaseCommand::SetUserShieldingKeyPreflight(cmd) => cmd.run(cli, trusted_cli),
 			TrustedBaseCommand::GetStorage(cmd) => cmd.run(cli, trusted_cli),
+			TrustedBaseCommand::BuildAssertion(cmd) => cmd.run(cli, trusted_cli),
 		}
 	}
 }
