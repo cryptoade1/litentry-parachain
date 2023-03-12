@@ -22,7 +22,7 @@ use crate::{
 use codec::Encode;
 use ita_stf::{TrustedCall, TrustedOperation};
 use itp_node_api::{
-	api_client::ParentchainUncheckedExtrinsic,
+	api_client::{pallet_timestamp::PalletTimestampApi, ParentchainUncheckedExtrinsic},
 	metadata::{
 		pallet_imp::IMPCallIndexes, pallet_teerex::TeerexCallIndexes,
 		pallet_utility::UtilityCallIndexes, pallet_vcmp::VCMPCallIndexes,
